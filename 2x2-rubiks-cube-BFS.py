@@ -1,19 +1,31 @@
-testData = "OBBBGGOWYGYORYRBRYGWRWOW"
-
 # Rubiks Cube encode
-#          +---+---+
-#          | 5 | 6 |
-#          +---+---+
-#          | 7 | 8 | 
-#  +---+---+---+---+---+---+---+---+
-#  | 1 | 2 | 9 | 10| 17| 18| 21| 22|
-#  +---+---+---+---+---+---+---+---+
-#  | 3 | 4 | 11| 12| 19| 20| 23| 24|
-#  +---+---+---+---+---+---+---+---+
-#          | 13| 14|
-#          +---+---+
-#          | 15| 16|
-#          +---+---+
+print('''
+Please enter the colours of the stickers in the following sequence:
+
+         +---+---+
+         | 5 | 6 |
+         +---+---+
+         | 7 | 8 | 
+ +---+---+---+---+---+---+---+---+
+ | 1 | 2 | 9 | 10| 17| 18| 21| 22|
+ +---+---+---+---+---+---+---+---+
+ | 3 | 4 | 11| 12| 19| 20| 23| 24|
+ +---+---+---+---+---+---+---+---+
+         | 13| 14|
+         +---+---+
+         | 15| 16|
+         +---+---+
+
+Example: OBBBGGOWYGYORYRBRYGWRWOW
+'''
+)
+
+# Getting User Input
+testData = input("Please Enter a Valid Cube Configuration:")
+
+while((len(testData) != 24) or (not testData.isalpha())):
+    testData = input("Please Enter a Valid Cube Configuration:")
+
 
 # Functions representing legal moves
 
@@ -94,6 +106,9 @@ def solutionFound(V):
 
 # Breadth-First Search base case
 def BFS(u):
+    if solutionFound(u):
+        return 0
+    
     D = [{u}, N(u)]         #D_0 = {u}
                             #D_1 = N_v(u)
 
